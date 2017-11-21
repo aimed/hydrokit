@@ -1,0 +1,9 @@
+@import "./mixins";
+
+.hk-button {
+    @include hydrokit-button-base();
+    
+    &--primary {
+        @include hydrokit-button-primary();
+    }
+}
