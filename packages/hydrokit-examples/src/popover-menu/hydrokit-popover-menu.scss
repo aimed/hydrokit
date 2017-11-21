@@ -1,0 +1,10 @@
+@import "./mixins";
+
+.hk-popover-menu {
+    @include hydrokit-popover-menu-base();
+
+    @at-root .hk-theme-dark &__content {
+        @include hydrokit-theme-dark();
+    }
+
+}
