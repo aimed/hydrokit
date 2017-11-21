@@ -7,6 +7,12 @@
     height: 1rem;
     position: relative;
     margin: 0.2em;
+    
+    & + label {
+        position: absolute;
+        margin-left: 0.4em;
+        margin-top: 0.2em;
+    }
 
     &__native-element {
         position: absolute;
@@ -69,7 +75,7 @@
 
     &__native-element:focus:checked ~ &__background {
         background-color: lighten($hk-color-primary, 40%);        
-        animation: animate-check 0.2s linear;
+        animation: animate-check 0.3s linear;
     }
 }
 
