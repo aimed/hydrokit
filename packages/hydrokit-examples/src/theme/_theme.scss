@@ -1,0 +1,48 @@
+$hk-background-color: #ffffff;
+$hk-text-color-on-background: #333333;
+$hk-background-color-dark: #64677B;
+$hk-text-color-on-background-dark: #ffffff;
+
+$hk-color-primary: #02AFF5;
+$hk-text-color-on-primary: #ffffff;
+$hk-border-radius: 5px;
+
+@mixin hydrokit-theme($bgcolor, $fgcolor, $interactive: false) {
+    background-color: $bgcolor;
+    color: $fgcolor;
+
+    @if($interactive) {
+        transition: background-color, border .2s ease-out;
+        
+        &:hover,
+        &:focus {
+            background-color: darken($bgcolor, 5%);
+        }
+    }
+}
+
+@mixin hydrokit-theme-bright($interactive: false) {
+    @include hydrokit-theme($hk-background-color, $hk-text-color-on-background, $interactive);
+}
+
+@mixin hydrokit-theme-dark($interactive: false) {
+    @include hydrokit-theme($hk-background-color-dark, $hk-text-color-on-background-dark, $interactive);
+}
+
+@mixin hydrokit-theme-primary($interactive: false) {
+    @include hydrokit-theme($hk-color-primary, $hk-text-color-on-primary, $interactive);
+}
+
+@mixin hydrokit-component-base() {
+    font-size: 1rem;
+    padding: 0.3rem 0.4rem;
+    border-radius: $hk-border-radius;
+}
+
+@mixin hydrokit-clickable() {
+    outline: none;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
