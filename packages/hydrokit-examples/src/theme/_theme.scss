@@ -5,6 +5,8 @@ $hk-text-color-on-background-dark: #ffffff;
 
 $hk-color-primary: #02AFF5;
 $hk-text-color-on-primary: #ffffff;
+$hk-color-error: #FF413A;
+
 $hk-border-radius: 5px;
 
 @mixin hydrokit-theme($bgcolor, $fgcolor, $interactive: false) {
