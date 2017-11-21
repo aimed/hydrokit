@@ -1,6 +1,7 @@
 import './App.css';
 import './button/hydrokit-button.css';
 import './list/hydrokit-list.css';
+import './formfield/hydrokit-formfield.css';
 import './checkbox/hydrokit-checkbox.css';
 import './textfield/hydrokit-textfield.css';
 import './popover-menu/hydrokit-popover-menu.css';
@@ -9,6 +10,7 @@ import * as React from 'react';
 
 import { Button } from './button/Button';
 import { Checkbox } from './checkbox/Checkbox';
+import { FormField } from './formfield/FormField';
 import { List } from './list/List';
 import { ListGroup } from './list/ListGroup';
 import { ListItem } from './list/ListItem';
@@ -41,8 +43,15 @@ export class App extends React.Component {
 
           <section>
             <h2>Forms</h2>
-            <section><TextField placeholder="Text field" /></section>
-            <section><Checkbox /> Checkbox</section>
+            <FormField label="Label" hint="Hint">
+              <TextField placeholder="Text field" />
+            </FormField>
+            <FormField label="Label" error="Error">
+              <TextField placeholder="Text field with error" />
+            </FormField>
+            <FormField>
+              <Checkbox /><label>Checkbox</label>
+            </FormField>
           </section>
 
           <section>
