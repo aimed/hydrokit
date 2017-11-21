@@ -1,0 +1,35 @@
+@import "theme/theme";
+
+@mixin hydrokit-list-base() {
+    margin: 0;
+    padding: 0;
+}
+
+@mixin _hydrokit-list-item() {
+    @include hydrokit-component-base();
+    list-style: none;
+    font-weight: 300;
+}
+
+@mixin hydrokit-list-item-base() {
+    @include _hydrokit-list-item();
+    @include hydrokit-theme-bright();
+}
+
+@mixin hydrokit-list-item-dark() {
+    @include hydrokit-theme-dark();
+}
+
+@mixin hydrokit-list-item-clickable() {
+    @include hydrokit-clickable();
+    @include hydrokit-theme-bright(true);
+}
+
+@mixin hydrokit-list-item-clickable-dark() {
+    @include hydrokit-clickable();
+    @include hydrokit-theme-dark(true);
+}
+
+@mixin hydrokit-list-item-header() {
+    font-weight: 500;
+}

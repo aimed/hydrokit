@@ -1,0 +1,32 @@
+@import "theme/_theme";
+@import "./mixins";
+
+.hk-list {
+    @include hydrokit-list-base();
+    
+    &__group {
+        margin-top: 0.5em;
+    }
+
+    &__item {
+        @include hydrokit-list-item-base();
+
+        &--clickable {
+            @include hydrokit-list-item-clickable();
+        }
+
+        &--header {
+            @include hydrokit-list-item-header();
+        }
+    }
+
+    @at-root .hk-theme-dark & {
+        &__item {
+            @include hydrokit-list-item-dark();
+    
+            &--clickable {
+                @include hydrokit-list-item-clickable-dark();
+            }
+        }
+    }
+}
