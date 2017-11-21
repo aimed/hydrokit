@@ -7,8 +7,8 @@ export interface TextFieldProps extends
 export class TextField extends React.Component<TextFieldProps, TextFieldState> {
     render() {
         return (
-            <div className="hk-textfield-container">
-                <input className="hk-textfield" {...this.props} />
+            <div className="hk-textfield">
+                <input className="hk-textfield__native-control" {...this.props} />
             </div>
         );
     }
