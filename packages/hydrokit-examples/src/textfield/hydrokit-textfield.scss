@@ -1,57 +1,22 @@
 @import "theme/theme";
 
 .hk-textfield {
-    position: relative;
-
-    @at-root .hk-formfield--focussed & {
-        color: $hk-color-primary;
-    }
-
-    @at-root .hk-formfield--error & {
-        color: $hk-color-error;
-    }
-
-    @at-root .hk-formfield--focussed &::after {
-        content: "";
-        bottom: 0;
-        left: 0;
-        right: 100%;
-        z-index: 1;
-        position: absolute;
-        width: 100%;
-        border-bottom: 2px solid currentColor;
-        transform-origin: left;
-        animation: textfield-border-appear 0.1s ease-out;
-    }
-
     &__native-control {
         @include hydrokit-component-base();
         @include hydrokit-theme-bright();
-    
+        
+        padding: $hk-padding-component-big;
+        box-sizing: border-box;
         font-size: 1rem;
-        padding: 0.5rem 0;
         border: 0;
-        border-bottom: 1px solid darken($hk-background-color, 5%);
-        border-radius: $hk-border-radius $hk-border-radius 0 0;
+        border-radius: $hk-border-radius;
         outline: none;
-    
+
+        transition: background-color linear 0.2s;
+
         &:hover,
         &:focus {
-            border-bottom: 1px solid $hk-color-primary;
+            background-color: darken($hk-background-color, 2%);
         }
-    
-        @at-root .hk-formfield--error & {
-            border-color: $hk-color-error;
-        }
-    }
-}
-
-@keyframes textfield-border-appear {
-    0% {
-        transform: scaleX(0);
-    }
-
-    100% {
-        transform: scaleX(1);
     }
 }
