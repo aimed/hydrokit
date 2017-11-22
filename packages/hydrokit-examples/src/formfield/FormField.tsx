@@ -9,6 +9,7 @@ export interface FormFieldProps {
     label?: string;
     hint?: string;
     error?: string;
+    htmlFor?: string;
 }
 
 export class FormField extends React.Component<FormFieldProps, FormFieldState> {
@@ -16,14 +17,12 @@ export class FormField extends React.Component<FormFieldProps, FormFieldState> {
         focussed: false
     };
 
-    container: HTMLDivElement | null = null;
-    
-    get focusWithin(): boolean {
-        return !!(this.container && this.container.contains(document.activeElement));
+    focus = () => {
+        this.setState({ focussed: true });
     }
-
-    focusChange = (e: React.FocusEvent<HTMLDivElement>) => {
-        this.setState({ focussed: this.focusWithin });
+    
+    blur = () => {
+        this.setState({ focussed: false });
     }
 
     render() {
@@ -31,7 +30,8 @@ export class FormField extends React.Component<FormFieldProps, FormFieldState> {
             label,
             error,
             hint,
-            children
+            children,
+            htmlFor
         } = this.props;
 
         const formFieldClassName = classnames(
@@ -43,14 +43,13 @@ export class FormField extends React.Component<FormFieldProps, FormFieldState> {
         return (
             <div 
                 className={formFieldClassName} 
-                onFocus={this.focusChange} 
-                ref={r => this.container = r} 
-                onBlur={this.focusChange}
+                onFocus={this.focus} 
+                onBlur={this.blur}
             >
-                <div className="hk-formfield__meta">
-                    {<div className="hk-formfield__label">{label}</div>}
-                    {<div className="hk-formfield__hint">{hint}</div>}
-                </div>
+                {(label || hint) && <div className="hk-formfield__meta">
+                    {label && <label className="hk-formfield__label" htmlFor={htmlFor}>{label}</label>}
+                    {hint && <div className="hk-formfield__hint">{hint}</div>}
+                </div>}
                 <div className="hk-formfield__field">
                     {children}
                 </div>
