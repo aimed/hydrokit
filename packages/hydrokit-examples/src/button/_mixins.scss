@@ -1,4 +1,4 @@
-@import "theme/theme";
+@import "@hydrokit/theme/theme";
 
 @mixin _hydrokit-button() {
     @include hydrokit-component-base();
