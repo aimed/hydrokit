@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { classnames } from '../utils/classnames';
+import { classnames } from '@hydrokit/utils';
 
 export interface PopoverMenuState {
     open: boolean;

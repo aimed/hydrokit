@@ -12,7 +12,7 @@ export class AddressForm extends React.Component<AddressFormProps, AddressFormSt
         <form onSubmit={e => e.preventDefault()}>
             <fieldset>
                 <FormField>
-                    <TextField placeholder="Search" />
+                    <TextField placeholder="Street name" />
                 </FormField>
             </fieldset>
         </form>
