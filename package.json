@@ -7,5 +7,8 @@
 	},
 	"workspaces": [
         "packages/*"
-    ]
+	],
+	"scripts": {
+		"example": "yarn --cwd packages/hydrokit-examples start"
+	}
 }
