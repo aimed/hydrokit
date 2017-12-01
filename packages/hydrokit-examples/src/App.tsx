@@ -8,7 +8,6 @@ import './popover-menu/hydrokit-popover-menu.css';
 
 import * as React from 'react';
 
-import { AddressForm } from './address-form/AddressForm';
 import { Button } from './button/Button';
 import { Checkbox } from './checkbox/Checkbox';
 import { FormField } from './formfield/FormField';
@@ -16,26 +15,13 @@ import { List } from './list/List';
 import { ListGroup } from './list/ListGroup';
 import { ListItem } from './list/ListItem';
 import { PopoverMenu } from './popover-menu/PopoverMenu';
+import { Showcase } from './Showcase/Showcase';
 import { TextField } from './textfield/TextField';
 
 export class App extends React.Component {
   render() {
     return (
       <div className="app">
-        <section className="app__sidebar">
-          <h1>Hydrokit</h1>
-          <List>
-            <ListGroup>
-              <ListItem header>Buttons</ListItem>
-            </ListGroup>
-            <ListGroup>
-              <ListItem header>Forms</ListItem>
-              <ListItem>Text field</ListItem>
-              <ListItem>Checkbox</ListItem>
-            </ListGroup>
-          </List>
-        </section>
-
         <section className="app__content">
           <section>
             <h1>Hydrokit</h1>
@@ -44,19 +30,12 @@ export class App extends React.Component {
             <p>This framework is right for you, if you want to provide a clean and fun to use experience, but you should probably look somewhere else if you require a high amount of customizability.</p>
           </section>
 
-          <section>
-            <h2>Buttons</h2>
+          <Showcase title="Buttons">
             <section><Button>Hello</Button></section>
             <section><Button primary>Hello</Button></section>
-          </section>
+          </Showcase>
 
-          <section>
-            <h2>Address form</h2>
-            <AddressForm />
-          </section>
-
-          <section>
-            <h2>Forms</h2>
+          <Showcase title="Forms">
             <FormField label="Label" hint="Hint">
               <TextField placeholder="Text field" />
             </FormField>
@@ -66,10 +45,9 @@ export class App extends React.Component {
             <FormField>
               <Checkbox /><label>Checkbox</label>
             </FormField>
-          </section>
+          </Showcase>
 
-          <section>
-            <h2>Lists</h2>
+          <Showcase title="Lists">
             <List>
               <ListItem header onClick={e => { /**/ }}>List header</ListItem>
               <ListItem onClick={e => { /**/ }}>Clickable item</ListItem>
@@ -79,10 +57,9 @@ export class App extends React.Component {
                 <ListItem onClick={e => { /**/ }}>Group item</ListItem>
               </ListGroup>
             </List>
-          </section>
+          </Showcase>
 
-          <section>
-            <h2>Popover Menu</h2>
+          <Showcase title="Popovers">
             <section>
               <PopoverMenu label={<Button>Toggle</Button>}>
                 <List>
@@ -99,7 +76,8 @@ export class App extends React.Component {
                 </List>
               </PopoverMenu>
             </section>
-          </section>
+          </Showcase>
+          
         </section>
       </div>
     );
