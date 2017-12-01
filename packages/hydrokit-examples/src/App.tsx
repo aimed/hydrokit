@@ -8,6 +8,7 @@ import './popover-menu/hydrokit-popover-menu.css';
 
 import * as React from 'react';
 
+import { AddressForm } from './address-form/AddressForm';
 import { Button } from './button/Button';
 import { Checkbox } from './checkbox/Checkbox';
 import { FormField } from './formfield/FormField';
@@ -39,6 +40,11 @@ export class App extends React.Component {
             <h2>Buttons</h2>
             <section><Button>Hello</Button></section>
             <section><Button primary>Hello</Button></section>
+          </section>
+
+          <section>
+            <h2>Address form</h2>
+            <AddressForm />
           </section>
 
           <section>

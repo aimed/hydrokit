@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@hydrokit/theme": "^0.1.0",
+    "@hydrokit/utils": "^0.1.0",
     "node-sass-chokidar": "^0.0.3",
     "npm-run-all": "^4.1.2",
     "react": "^16.1.1",

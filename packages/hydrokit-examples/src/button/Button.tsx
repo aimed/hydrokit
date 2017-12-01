@@ -2,7 +2,7 @@ import './hydrokit-button.css';
 
 import * as React from 'react';
 
-import { classnames } from '../utils/classnames';
+import { classnames } from '@hydrokit/utils/classnames';
 
 export interface ButtonState { }
 export interface ButtonProps extends
