@@ -20,7 +20,7 @@
     "build": "npm-run-all build-css build-js",
     "test": "react-scripts-ts test --env=jsdom",
     "eject": "react-scripts-ts eject",
-    "surge": "node_modules/.bin/surge -p ./build/ -d https://hydrokit.surge.sh"
+    "surge": "yarn build && node_modules/.bin/surge -p ./build/ -d https://hydrokit.surge.sh"
   },
   "devDependencies": {
     "@types/jest": "^21.1.6",
