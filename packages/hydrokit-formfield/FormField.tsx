@@ -46,14 +46,18 @@ export class FormField extends React.Component<FormFieldProps, FormFieldState> {
                 onFocus={this.focus} 
                 onBlur={this.blur}
             >
-                {(label || hint) && <div className="hk-formfield__meta">
-                    {label && <label className="hk-formfield__label" htmlFor={htmlFor}>{label}</label>}
-                    {hint && <div className="hk-formfield__hint">{hint}</div>}
-                </div>}
+                {(label || hint) && 
+                    <div className="hk-formfield__meta">
+                        {label && <label className="hk-formfield__label" htmlFor={htmlFor}>{label}</label>}
+                        {hint && <div className="hk-formfield__hint">{hint}</div>}
+                    </div>
+                }
                 <div className="hk-formfield__field">
                     {children}
                 </div>
-                {<div className="hk-formfield__error">{error}</div>}
+                {error && 
+                    <div className="hk-formfield__error">{error}</div>
+                }
             </div>
         );
     }

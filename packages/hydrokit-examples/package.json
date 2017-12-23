@@ -5,6 +5,12 @@
   "dependencies": {
     "@hydrokit/theme": "^0.1.0",
     "@hydrokit/utils": "^0.1.0",
+    "@hydrokit/button": "^0.1.0",
+    "@hydrokit/popover-menu": "^0.1.0",
+    "@hydrokit/list": "^0.1.0",
+    "@hydrokit/formfield": "^0.1.0",
+    "@hydrokit/checkbox": "^0.1.0",
+    "@hydrokit/textfield": "^0.1.0",
     "node-sass-chokidar": "^0.0.3",
     "npm-run-all": "^4.1.2",
     "react": "^16.1.1",

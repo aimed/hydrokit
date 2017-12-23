@@ -1,5 +1,3 @@
-import './hydrokit-button.css';
-
 import * as React from 'react';
 
 import { classnames } from '@hydrokit/utils';

@@ -1,22 +1,15 @@
 import './App.css';
-import './button/hydrokit-button.css';
-import './list/hydrokit-list.css';
-import './formfield/hydrokit-formfield.css';
-import './checkbox/hydrokit-checkbox.css';
-import './textfield/hydrokit-textfield.css';
-import './popover-menu/hydrokit-popover-menu.css';
 
 import * as React from 'react';
 
-import { Button } from './button/Button';
-import { Checkbox } from './checkbox/Checkbox';
-import { FormField } from './formfield/FormField';
-import { List } from './list/List';
-import { ListGroup } from './list/ListGroup';
-import { ListItem } from './list/ListItem';
-import { PopoverMenu } from './popover-menu/PopoverMenu';
+import { List, ListGroup, ListItem } from '@hydrokit/list';
+
+import { Button } from '@hydrokit/button';
+import { Checkbox } from '@hydrokit/checkbox';
+import { FormField } from '@hydrokit/formfield';
+import { PopoverMenu } from '@hydrokit/popover-menu';
 import { Showcase } from './Showcase/Showcase';
-import { TextField } from './textfield/TextField';
+import { TextField } from '@hydrokit/textField';
 
 export class App extends React.Component {
   render() {
@@ -26,7 +19,9 @@ export class App extends React.Component {
           <section>
             <h1>Hydrokit</h1>
             <h2>Clean and fun</h2>
+            {/* tslint:disable-next-line:max-line-length*/}     
             <p>Hydrokit is a react UI framework designed to be as clean as possible while putting a focus on UX. It comes with beautifully animated and ready to use components out of the box. This approach results in an opinionated framework.</p>
+            {/* tslint:disable-next-line:max-line-length*/}     
             <p>This framework is right for you, if you want to provide a clean and fun to use experience, but you should probably look somewhere else if you require a high amount of customizability.</p>
           </section>
 
@@ -77,7 +72,7 @@ export class App extends React.Component {
               </PopoverMenu>
             </section>
           </Showcase>
-          
+
         </section>
       </div>
     );
