@@ -1,7 +1,6 @@
 .showcase {
   position: relative;
   display: flex;
-  flex-wrap: wrap;
   margin-top: 10vh;
   
   &__title {
@@ -12,5 +11,9 @@
 
   &__content {
     flex: 1;
+  }
+
+  @media (max-width: 500px) {
+    display: block;
   }
 }
