@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { FormField } from '../formfield/FormField';
-import { TextField } from '../textfield/TextField';
+import { FormField } from '@hydrokit/formfield';
+import { TextField } from '@hydrokit/textField';
 
 export interface AddressFormState {}
 export interface AddressFormProps {}
