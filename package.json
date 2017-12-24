@@ -6,7 +6,7 @@
 		"lerna": "^2.5.1"
 	},
 	"workspaces": [
-        "packages/*"
+		"packages/*"
 	],
 	"scripts": {
 		"example": "yarn --cwd packages/hydrokit-examples start"
