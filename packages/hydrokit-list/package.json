@@ -1,12 +1,12 @@
 {
   "name": "@hydrokit/list",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "license": "MIT",
   "dependencies": {
-    "@hydrokit/theme": "^0.1.0",
-    "@hydrokit/utils": "^0.1.0"
+    "@hydrokit/theme": "^0.2.0",
+    "@hydrokit/utils": "^0.2.0"
   },
   "scripts": {
     "build": "tsc"
