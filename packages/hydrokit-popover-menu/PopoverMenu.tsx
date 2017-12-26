@@ -3,65 +3,79 @@ import * as React from 'react';
 import { classnames } from '@hydrokit/utils';
 
 export interface PopoverMenuState {
-    open: boolean;
+  open: boolean;
 }
+
 export interface PopoverMenuProps {
-    anchor?: HTMLElement | null;
-    label: JSX.Element | string;
-    open?: boolean;
-    onOpen?: (open: boolean) => void;
-    dark?: boolean;
+  anchor?: HTMLElement | null;
+  label: JSX.Element | string;
+  open?: boolean;
+  onOpen?: (open: boolean) => void;
+  dark?: boolean;
+  alignVertical?: 'top' | 'bottom';
+  alignHorizontal?: 'left' | 'right';
 }
 
 export class PopoverMenu extends React.Component<PopoverMenuProps, PopoverMenuState> {
-    
-    state: PopoverMenuState = {
-        open: false
-    };
 
-    container: HTMLElement | null = null;
+  state: PopoverMenuState = {
+    open: false
+  };
 
-    get open() {
-        return this.props.open !== undefined ? this.props.open : this.state.open;
-    }
+  container: HTMLElement | null = null;
 
-    toggle = () => {
-        if (this.props.onOpen) {
-            this.props.onOpen(!this.open);
-        } else {
-            this.setState({ open: !this.open });
-        }
-    }
+  get open() {
+    return this.props.open !== undefined ? this.props.open : this.state.open;
+  }
 
-    handleDocumentClick = (event: MouseEvent) => {
-        if (
-            !(this.container && event.srcElement && this.container.contains(event.srcElement))
-            && this.open
-        ) {
-            this.toggle();
-        }
-    }
+  get align(): string {
+    const { alignHorizontal = 'left', alignVertical = 'top' } = this.props;
+    return `${alignVertical}-${alignHorizontal}`;
+  }
 
-    componentWillMount() {
-        document.addEventListener('click', this.handleDocumentClick);
+  toggle = () => {
+    if (this.props.onOpen) {
+      this.props.onOpen(!this.open);
+    } else {
+      this.setState({ open: !this.open });
     }
-    componentWillUnmount() {
-        document.removeEventListener('click', this.handleDocumentClick);
-    }
+  }
 
-    render() {
-        const themeClassNames = classnames(
-            'hk-popover-menu-container',
-            this.props.dark ? 'hk-theme-dark' : 'hk-theme-bright'
-        );
-        
-        return (
-            <div className={themeClassNames}>
-                <div className="hk-popover-menu" ref={ref => this.container = ref} onClick={this.toggle}>
-                    <div className="hk-popover-menu__label">{this.props.label}</div>
-                    {this.open && <div className="hk-popover-menu__content">{this.props.children}</div>}
-                </div>
-            </div>
-        );
+  handleDocumentClick = (event: MouseEvent) => {
+    if (
+      !(this.container && event.srcElement && this.container.contains(event.srcElement))
+      && this.open
+    ) {
+      this.toggle();
     }
+  }
+
+  componentWillMount() {
+    document.addEventListener('click', this.handleDocumentClick);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('click', this.handleDocumentClick);
+  }
+
+  render() {    
+    const themeClassNames = classnames(
+      'hk-popover-menu-container',
+      this.props.dark ? 'hk-theme-dark' : 'hk-theme-bright'
+    );
+
+    const contentClassNames = classnames(
+      'hk-popover-menu__content',
+      'hk-popover-menu__content--' + this.align
+    );
+
+    return (
+      <div className={themeClassNames}>
+        <div className="hk-popover-menu" ref={ref => this.container = ref} onClick={this.toggle}>
+          <div className="hk-popover-menu__label">{this.props.label}</div>
+          {this.open && <div className={contentClassNames}>{this.props.children}</div>}
+        </div>
+      </div>
+    );
+  }
 }

@@ -71,6 +71,14 @@ export class App extends React.Component {
                 </List>
               </PopoverMenu>
             </section>
+            <section>
+              <PopoverMenu dark label={<Button>Toggle</Button>} alignVertical="bottom">
+                <List>
+                  <ListItem onClick={e => { /**/ }}>Manually opened menu</ListItem>
+                  <ListItem onClick={e => { /**/ }}>Yepp</ListItem>
+                </List>
+              </PopoverMenu>
+            </section>
           </Showcase>
 
         </section>
