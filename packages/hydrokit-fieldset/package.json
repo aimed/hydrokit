@@ -1,6 +1,13 @@
 {
   "name": "@hydrokit/fieldset",
   "version": "0.3.1",
-  "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "homepage": "https://github.com/aimed/hydrokit",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/aimed/hydrokit.git"
+  },
+  "peerDependencies": {
+    "react": "^16.2.0"
+  }
 }

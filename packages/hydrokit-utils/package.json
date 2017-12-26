@@ -6,5 +6,13 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc"
+  },
+  "homepage": "https://github.com/aimed/hydrokit",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/aimed/hydrokit.git"
+  },
+  "peerDependencies": {
+    "react": "^16.2.0"
   }
 }
