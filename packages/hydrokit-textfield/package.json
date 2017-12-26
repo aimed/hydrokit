@@ -8,6 +8,9 @@
     "@hydrokit/theme": "^0.3.2",
     "@hydrokit/utils": "^0.3.2"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsc"
   }
