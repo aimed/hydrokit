@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/aimed/hydrokit/compare/v0.2.0...v0.3.0) (2017-12-26)
+
+
+### Features
+
+* **popovermenu:** adds align arguments ([18b9b2a](https://github.com/aimed/hydrokit/commit/18b9b2a))
+
+
+
+
 <a name="0.2.0"></a>
 # 0.2.0 (2017-12-25)
 
