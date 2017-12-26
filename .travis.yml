@@ -14,5 +14,5 @@ before_script:
 script: yarn run build
 
 after_success:
-  - test $TRAVIS_BRANCH = "master" && lerna publish --conventional-commits --canary --yes
+  - test $TRAVIS_BRANCH = "master" && lerna publish --conventional-commits --yes --access public
   - test $TRAVIS_BRANCH = "master" && lerna run surge
