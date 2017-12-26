@@ -1,0 +1,18 @@
+language: node_js
+
+node_js:
+  - "node"
+
+cache:
+  directories:
+    - $HOME/.npm
+    - $HOME/.yarn-cache
+
+before_script:
+  - yarn
+
+script: yarn build
+
+after_success:
+  - test $TRAVIS_BRANCH = "master" && lerna publish --conventional-commits
+  - test $TRAVIS_BRANCH = "master" && lerna run surge
