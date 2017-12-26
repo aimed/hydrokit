@@ -9,9 +9,9 @@ cache:
     - $HOME/.yarn-cache
 
 before_script:
-  - yarn
+  - yarn run install
 
-script: yarn build
+script: yarn run build
 
 after_success:
   - test $TRAVIS_BRANCH = "master" && lerna publish --conventional-commits --canary --yes

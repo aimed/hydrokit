@@ -9,6 +9,7 @@
 		"packages/*"
 	],
 	"scripts": {
+		"install": "lerna bootstrap",
 		"build": "lerna run build --ignore hydrokit-examples",
 		"example": "yarn --cwd packages/hydrokit-examples start"
 	}
