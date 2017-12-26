@@ -1,6 +1,6 @@
 {
   "name": "@hydrokit/button",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "license": "MIT",
@@ -17,8 +17,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@hydrokit/theme": "^0.3.2",
-    "@hydrokit/utils": "^0.3.2"
+    "@hydrokit/theme": "^0.3.3",
+    "@hydrokit/utils": "^0.3.3"
   },
   "scripts": {
     "build": "tsc"

@@ -1,11 +1,11 @@
 {
   "name": "@hydrokit/popover-menu",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "main": "build/index.js",
   "license": "MIT",
   "dependencies": {
-    "@hydrokit/theme": "^0.3.2",
-    "@hydrokit/utils": "^0.3.2"
+    "@hydrokit/theme": "^0.3.3",
+    "@hydrokit/utils": "^0.3.3"
   },
   "publishConfig": {
     "access": "public"
