@@ -64,7 +64,7 @@ export class App extends React.Component {
               </PopoverMenu>
             </section>
             <section>
-              <PopoverMenu dark label={<Button>Toggle</Button>}>
+              <PopoverMenu dark label={<Button>Dark</Button>}>
                 <List>
                   <ListItem onClick={e => { /**/ }}>Manually opened menu</ListItem>
                   <ListItem onClick={e => { /**/ }}>Yepp</ListItem>
@@ -72,7 +72,7 @@ export class App extends React.Component {
               </PopoverMenu>
             </section>
             <section>
-              <PopoverMenu dark label={<Button>Toggle</Button>} alignVertical="bottom">
+              <PopoverMenu dark label={<Button>Bottom Align</Button>} alignVertical="bottom">
                 <List>
                   <ListItem onClick={e => { /**/ }}>Manually opened menu</ListItem>
                   <ListItem onClick={e => { /**/ }}>Yepp</ListItem>
