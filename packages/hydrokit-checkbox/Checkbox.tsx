@@ -2,7 +2,7 @@ import * as React from 'react';
 
 export interface CheckboxState { }
 export interface CheckboxProps extends
-    React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> { }
+    React.HTMLProps<HTMLInputElement> { }
 
 // Uses https://material.io/icons/ checkbox
 export class Checkbox extends React.Component<CheckboxProps, CheckboxState> {

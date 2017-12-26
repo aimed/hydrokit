@@ -2,7 +2,7 @@ import * as React from 'react';
 
 export interface TextFieldState { }
 export interface TextFieldProps extends
-    React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> { }
+    React.HTMLProps<HTMLInputElement> { }
 
 export class TextField extends React.Component<TextFieldProps, TextFieldState> {
     render() {

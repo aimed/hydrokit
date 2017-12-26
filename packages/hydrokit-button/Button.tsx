@@ -4,7 +4,7 @@ import { classnames } from '@hydrokit/utils';
 
 export interface ButtonState { }
 export interface ButtonProps extends
-  React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
+  React.HTMLProps<HTMLButtonElement> {
     className?: string;
     primary?: boolean;
 }
