@@ -2,9 +2,9 @@ import './App.css';
 
 import * as React from 'react';
 
+import { Button, SubmitButton } from '@hydrokit/button';
 import { List, ListGroup, ListItem } from '@hydrokit/list';
 
-import { Button } from '@hydrokit/button';
 import { Checkbox } from '@hydrokit/checkbox';
 import { FormField } from '@hydrokit/formfield';
 import { PopoverMenu } from '@hydrokit/popover-menu';
@@ -26,8 +26,10 @@ export class App extends React.Component {
           </section>
 
           <Showcase title="Buttons">
-            <section><Button>Hello</Button></section>
-            <section><Button primary>Hello</Button></section>
+            <section><Button>Regular</Button></section>
+            <section><Button primary>Primary</Button></section>
+            <section><Button disabled>Disabled</Button></section>
+            <section><SubmitButton submitting>Submit button</SubmitButton></section>
           </Showcase>
 
           <Showcase title="Forms">

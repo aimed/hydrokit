@@ -1,0 +1,37 @@
+@import '@hydrokit/theme/theme';
+
+.hk-submit-button {
+  animation: background-color .1s linear;
+
+  &--submitting {
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      display: inline-block;
+      height: 1px;
+      left: $hk-border-radius;
+      bottom: 0;
+      background-color: $hk-color-primary;
+      animation: submitting 0.5s ease-in-out infinite alternate;
+    }
+  }
+}
+
+@keyframes submitting {
+  0% {
+    width: 0%;
+    left: $hk-border-radius;
+  }
+
+  50% {
+    width: calc(100% - #{2 * $hk-border-radius});
+    left: $hk-border-radius;
+  }
+
+  100% {
+    width: 0%;
+    left: calc(100% - #{$hk-border-radius});
+  }
+}
