@@ -18,9 +18,12 @@
   },
   "dependencies": {
     "@hydrokit/theme": "^0.3.4",
-    "@hydrokit/utils": "^0.3.4"
+    "@hydrokit/utils": "^0.3.4",
+    "node-sass-chokidar": "0.0.3"
   },
   "scripts": {
-    "build": "tsc"
+    "build-css": "node-sass-chokidar --include-path ./ --include-path ./node_modules ./ -o build/",
+    "build-ts": "tsc",
+    "build": "yarn build-css && yarn build-ts"
   }
 }
