@@ -17,7 +17,8 @@
   
   &__content {
     transform: translateY(0);
-    animation: popover-appear 0.1s ease-out;        
+    animation: popover-appear 0.1s ease-out;
+    min-width: 100%;
     width: max-content;
     position: absolute;
     z-index: 1;
