@@ -9,7 +9,7 @@ cache:
     - $HOME/.yarn-cache
 
 before_script:
-  - yarn run install
+  - yarn bootstrap
 
 script: yarn run build
 
