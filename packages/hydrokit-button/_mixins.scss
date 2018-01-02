@@ -1,19 +1,26 @@
 @import "@hydrokit/theme/theme";
 
 @mixin _hydrokit-button() {
-    @include hydrokit-component-base();
-    @include hydrokit-clickable();
-    border: none;
-    outline: none;
-    padding: 0.5rem 0.5rem;
+  @include hydrokit-component-base();
+  @include hydrokit-clickable();
+  border: 0;
+  outline: none;
 }
 
 @mixin hydrokit-button-base() {
-    @include _hydrokit-button();
-    @include hydrokit-theme-bright(true);
+  @include _hydrokit-button();
+  @include hydrokit-theme-bright(true);
+
+  &:disabled {
+    @include hydrokit-component-disabled-bright();
+  }
 }
 
 @mixin hydrokit-button-primary() {
-    @include _hydrokit-button();
-    @include hydrokit-theme-primary(true);
+  @include _hydrokit-button();
+  @include hydrokit-theme-primary(true);
+
+  &:disabled {
+    @include hydrokit-component-disabled-bright();
+  }
 }
