@@ -1,0 +1,27 @@
+{
+    "name": "@hydrokit/select",
+    "version": "0.4.0",
+    "main": "build/index.js",
+    "types": "build/index.d.ts",
+    "license": "MIT",
+    "homepage": "https://github.com/aimed/hydrokit",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/aimed/hydrokit.git"
+    },
+    "peerDependencies": {
+        "react": "^16.2.0"
+    },
+    "dependencies": {
+        "@hydrokit/theme": "^0.4.0",
+        "@hydrokit/utils": "^0.3.4",
+        "@hydrokit/textfield": "^0.4.0",
+        "@hydrokit/button": "^0.4.0"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "scripts": {
+        "build": "tsc"
+    }
+}

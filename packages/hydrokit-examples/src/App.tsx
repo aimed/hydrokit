@@ -5,11 +5,9 @@ import * as React from 'react';
 import { Button, SubmitButton } from '@hydrokit/button';
 import { List, ListGroup, ListItem } from '@hydrokit/list';
 
-import { Checkbox } from '@hydrokit/checkbox';
-import { FormField } from '@hydrokit/formfield';
+import { FormsShowcase } from './Showcases/FormsShowcase';
 import { PopoverMenu } from '@hydrokit/popover-menu';
 import { Showcase } from './Showcase/Showcase';
-import { TextField } from '@hydrokit/textField';
 
 export class App extends React.Component {
   render() {
@@ -32,17 +30,7 @@ export class App extends React.Component {
             <section><SubmitButton submitting>Submit button</SubmitButton></section>
           </Showcase>
 
-          <Showcase title="Forms">
-            <FormField label="Label" hint="Hint">
-              <TextField placeholder="Text field" />
-            </FormField>
-            <FormField label="Label" error="Error">
-              <TextField placeholder="Text field with error" />
-            </FormField>
-            <FormField>
-              <Checkbox /><label>Checkbox</label>
-            </FormField>
-          </Showcase>
+          <FormsShowcase />
 
           <Showcase title="Lists">
             <List>
