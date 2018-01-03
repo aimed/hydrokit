@@ -50,12 +50,20 @@ export class PopoverMenu extends React.Component<PopoverMenuProps, PopoverMenuSt
     }
   }
 
+  handleKeyDown = (event: KeyboardEvent) => {
+    if (event.keyCode === 27 /* esc */ && this.open) {
+      this.toggle();
+    }
+  }
+
   componentWillMount() {
     document.addEventListener('click', this.handleDocumentClick);
+    document.addEventListener('keydown', this.handleKeyDown);
   }
 
   componentWillUnmount() {
     document.removeEventListener('click', this.handleDocumentClick);
+    document.removeEventListener('keydown', this.handleKeyDown);
   }
 
   render() {    
