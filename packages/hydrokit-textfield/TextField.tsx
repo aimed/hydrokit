@@ -2,14 +2,18 @@ import * as React from 'react';
 
 export interface TextFieldState { }
 export interface TextFieldProps extends
-    React.HTMLProps<HTMLInputElement> { }
+  React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
+    inputRef?: (ref: HTMLInputElement | null) => any;
+//    ref?: (ref: TextField | null) => any;
+}
 
 export class TextField extends React.Component<TextFieldProps, TextFieldState> {
-    render() {
-        return (
-            <div className="hk-textfield">
-                <input className="hk-textfield__native-control" {...this.props} />
-            </div>
-        );
-    }
+  render() {
+    const { inputRef, ...props } = this.props;
+    return (
+      <div className="hk-textfield">
+        <input className="hk-textfield__native-control" {...props} ref={inputRef} />
+      </div>
+    );
+  }
 }
