@@ -3,3 +3,4 @@ node_modules/
 build/
 lerna-debug.log
 *.css
+yarn-error.log
