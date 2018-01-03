@@ -1,4 +1,4 @@
-@import '@hydrokit/theme/theme';
+@import './node_modules/@hydrokit/theme/theme';
 
 .hk-submit-button {
   animation: background-color .1s linear;
@@ -7,7 +7,7 @@
     position: relative;
 
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       display: inline-block;
       height: 1px;
