@@ -1,5 +1,16 @@
 @import './node_modules/@hydrokit/theme/theme';
 
+@keyframes select-appear {
+  0% {
+    opacity: 0.8;
+    transform: translateY(-1em) rotateZ(-2deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0em) rotateZ(0deg);
+  }
+}
+
 @mixin hk-select-icon {
   fill: currentColor;
   height: 1rem;
@@ -33,7 +44,8 @@
 
   &__select {
     // transform: translateY(0);
-    // animation: popover-appear 0.1s ease-out;
+    // animation: select-appear 0.1s ease-out;
+    animation: select-appear 0.1s ease-out;
     min-width: 100%;
     width: max-content;
     position: absolute;
