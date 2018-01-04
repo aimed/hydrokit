@@ -252,18 +252,24 @@ export class Select<T> extends React.Component<SelectProps<T>, SelectState> {
    */
   toggle = () => {
     const open = !this.state.open;
-    const { options = [], value } = this.props;
+    const { options = [], value, onSearch } = this.props;
 
     if (open) {
       this.registerOpenListeners();
     } else {
       this.unregisterOpenListeners();
+      
+      // At this point we need to clear the search, because otherwise results will still be filtered when going up/down
+      if (onSearch) {
+        onSearch('');
+      }
+
       if (this.buttonRef) {
         this.buttonRef.focus();
       }
     }
 
-    this.setState({ open, focusIndex: open && options.length ? this.selectedIndex ||  0 : -1 });
+    this.setState({ open, focusIndex: open && options.length ? this.selectedIndex ||  0 : -1, search: '' });
   }
 
   /**
