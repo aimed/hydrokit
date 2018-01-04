@@ -169,10 +169,20 @@ export class Select<T> extends React.Component<SelectProps<T>, SelectState> {
     document.removeEventListener('click', this.handleDocClick);
   }
 
+  /**
+   * Register listeners.
+   * 
+   * @memberof Select
+   */
   registerFocussedListeners = () => {
     document.addEventListener('keydown', this.handleKeyDownClosed);
   }
 
+  /**
+   * Unregister listeners.
+   * 
+   * @memberof Select
+   */
   unregisterFocussedListeners = () => {
     document.removeEventListener('keydown', this.handleKeyDownClosed);
   }
@@ -188,18 +198,39 @@ export class Select<T> extends React.Component<SelectProps<T>, SelectState> {
     }
   }
 
+  /**
+   * Gets the index of the next focussable item.
+   * 
+   * @readonly
+   * @type {number}
+   * @memberof Select
+   */
   get nextFocus(): number {
     const { focusIndex } = this.state;
     const { options = [] } = this.props;
     return Math.min(focusIndex + 1, options.length -1);
   }
 
+  /**
+   * Gets the index of the prev focussable item.
+   * 
+   * @readonly
+   * @type {number}
+   * @memberof Select
+   */
   get prevFocus(): number {
     const { focusIndex } = this.state;
     const { options = [] } = this.props;
     return Math.max(focusIndex - 1, -1);
   }
 
+  /**
+   * Gets the index of the selected item. Returns -1 if not found or nothing is selected.
+   * 
+   * @readonly
+   * @type {number}
+   * @memberof Select
+   */
   get selectedIndex(): number {
     const { options = [], value } = this.props;
     
