@@ -20,6 +20,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "start": "tsc -w"
   }
 }

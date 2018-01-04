@@ -12,6 +12,7 @@
 		"bootstrap": "lerna bootstrap",
 		"build": "lerna run build --ignore hydrokit-examples",
 		"example": "yarn --cwd packages/hydrokit-examples start",
-		"publish": "lerna publish --conventional-commits --registry=https://registry.npmjs.org/"
+		"publish": "lerna publish --conventional-commits --registry=https://registry.npmjs.org/",
+		"start": "lerna run --parallel start"
 	}
 }
