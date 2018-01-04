@@ -8,6 +8,14 @@ import { classnames } from '@hydrokit/utils';
 
 export { SelectOption } from './SelectOption';
 
+const KeyCodes = {
+  up: 40,
+  down: 38,
+  esc: 27,
+  enter: 13,
+  tab: 9
+};
+
 /**
  * Arrow Icon
  * Icon from https://material.io/icons/
@@ -122,7 +130,12 @@ export class Select<T> extends React.Component<SelectProps<T>, SelectState> {
    */
   quickSearch = new QuickSearchUtil();
 
+  /**
+   * 
+   * @param nextProps 
+   */
   componentWillReceiveProps(nextProps: SelectProps<T>) {
+    // Clear the current focus when receiving new options.
     if (this.props.options !== nextProps.options) {
       this.focus(0);
     }
@@ -132,7 +145,8 @@ export class Select<T> extends React.Component<SelectProps<T>, SelectState> {
    * 
    */
   componentWillUnmount() {
-    this.unregisterListeners();
+    this.unregisterOpenListeners();
+    this.unregisterFocussedListeners();
   }
 
   /**
@@ -140,8 +154,8 @@ export class Select<T> extends React.Component<SelectProps<T>, SelectState> {
    * 
    * @memberof Select
    */
-  registerListeners() {
-    document.addEventListener('keydown', this.handleKeyDown);
+  registerOpenListeners = () => {
+    document.addEventListener('keydown', this.handleKeyDownOpen);
     document.addEventListener('click', this.handleDocClick);
   }
 
@@ -150,9 +164,17 @@ export class Select<T> extends React.Component<SelectProps<T>, SelectState> {
    * 
    * @memberof Select
    */
-  unregisterListeners() {
-    document.removeEventListener('keydown', this.handleKeyDown);
+  unregisterOpenListeners = () => {
+    document.removeEventListener('keydown', this.handleKeyDownOpen);
     document.removeEventListener('click', this.handleDocClick);
+  }
+
+  registerFocussedListeners = () => {
+    document.addEventListener('keydown', this.handleKeyDownClosed);
+  }
+
+  unregisterFocussedListeners = () => {
+    document.removeEventListener('keydown', this.handleKeyDownClosed);
   }
 
   /**
@@ -166,6 +188,32 @@ export class Select<T> extends React.Component<SelectProps<T>, SelectState> {
     }
   }
 
+  get nextFocus(): number {
+    const { focusIndex } = this.state;
+    const { options = [] } = this.props;
+    return Math.min(focusIndex + 1, options.length -1);
+  }
+
+  get prevFocus(): number {
+    const { focusIndex } = this.state;
+    const { options = [] } = this.props;
+    return Math.max(focusIndex - 1, -1);
+  }
+
+  get selectedIndex(): number {
+    const { options = [], value } = this.props;
+    
+    if (!value) {
+      return -1;
+    }
+
+    if (isSelectOption(value)) {
+      return options.indexOf(value);
+    } else {
+      return options.map(o => o.value).indexOf(value);
+    }
+  }
+
   /**
    * Opens or closes the dropdown.
    * 
@@ -176,53 +224,96 @@ export class Select<T> extends React.Component<SelectProps<T>, SelectState> {
     const { options = [], value } = this.props;
 
     if (open) {
-      this.registerListeners();
+      this.registerOpenListeners();
     } else {
-      this.unregisterListeners();
+      this.unregisterOpenListeners();
       if (this.buttonRef) {
         this.buttonRef.focus();
       }
     }
 
-    const initialIndex = value ? options.map(o => o.value).indexOf(isSelectOption(value) ? value.value : value) : 0;
-    this.setState({ open, focusIndex: open && options.length ? initialIndex ||  0 : -1 });
+    this.setState({ open, focusIndex: open && options.length ? this.selectedIndex ||  0 : -1 });
   }
 
   /**
-   * Handles keyboard events by changing the focus, closing the dropdown, or seleting, depending on which key was used.
+   * Handles key events when in closed state.
    * 
    * @memberof Select
    */
-  handleKeyDown = (e: KeyboardEvent) => {
+  handleKeyDownClosed = (e: KeyboardEvent) => {
+    if (this.state.open) {
+      return;
+    }
+
     const { keyCode } = e;
-    const { focusIndex } = this.state;
     const { options = [] } = this.props;
 
-    if (keyCode === 40 /* up */) {
-      this.focus(focusIndex + 1);
+    if (keyCode === KeyCodes.up) {
+      this.select(this.selectedIndex + 1);
       e.preventDefault();
-    } else if (keyCode === 38 /* down */) {
-      this.focus(focusIndex - 1);
-      e.preventDefault();
-    } else if (keyCode === 27 /* esc */) {
-      this.toggle();
-    } else if (keyCode === 13 /* enter */) {
-      this.select(focusIndex);
-      e.preventDefault();
-    } else if (!this.searchFieldFocussed) {
-      // If focus is on the button element, select the first item that matches the given character.
-      this.quickSearch.enter(e.key);
-      const find = this.quickSearch.find(options);
-      if (find >= 0) {
-        if (this.state.open) {
-          this.focus(find);
-        } else {
-          this.select(find);
-        }
-      } else {
-        this.quickSearch.clear();
-      }
+      return;
     }
+
+    if (keyCode === KeyCodes.down) {
+      this.select(this.selectedIndex - 1);
+      e.preventDefault();
+      return;
+    }
+
+    if (e.key && !(e.metaKey || e.altKey || e.ctrlKey)) {
+      const find = this.quickSearch.enterAndFind(e.key, options);
+      
+      if (find >= 0) {
+        this.select(find);
+      }
+      return;
+    }    
+  }
+
+  /**
+   * Handles key events when in open state.
+   * 
+   * @memberof Select
+   */
+  handleKeyDownOpen = (e: KeyboardEvent) => {
+    const { keyCode } = e;
+    const { options = [] } = this.props;
+
+    if (keyCode === KeyCodes.up) {
+      this.focus(this.nextFocus);
+      e.preventDefault();
+      return;
+    }
+
+    if (keyCode === KeyCodes.down) {
+      this.focus(this.prevFocus);
+      e.preventDefault();
+      return;
+    }
+
+    if (keyCode === KeyCodes.esc) {
+      this.toggle();
+      return;
+    }
+
+    if (keyCode === KeyCodes.enter) {
+      this.select(this.state.focusIndex);
+      e.preventDefault(); // Prevents opening the menu again right after closing.
+      return;
+    }
+
+    if (keyCode === KeyCodes.tab) {
+      this.toggle();
+    }
+
+    if (e.key && !(e.metaKey || e.altKey || e.ctrlKey) && !this.searchFieldFocussed) {
+      const find = this.quickSearch.enterAndFind(e.key, options);
+      
+      if (find >= 0) {
+        this.focus(find);
+      }
+      return;
+    }    
   }
 
   /**
@@ -250,7 +341,7 @@ export class Select<T> extends React.Component<SelectProps<T>, SelectState> {
       this.toggle();
     }
     
-    if (onSelect && options.length >= focusIndex && focusIndex >= 0) {
+    if (onSelect && options.length > focusIndex && focusIndex >= 0) {
       onSelect(options[focusIndex]);
     }
   }
@@ -298,10 +389,16 @@ export class Select<T> extends React.Component<SelectProps<T>, SelectState> {
     );
 
     // TODO: Use Button with icons.
-    // TODO: Add ability to type.
     return (
       <div className={selectClasses} ref={ref => this.containerRef = ref}>
-        <button className={valueContainerClasses} tabIndex={0} onClick={this.toggle} ref={ref => this.buttonRef = ref}>
+        <button 
+          className={valueContainerClasses} 
+          tabIndex={0} 
+          onClick={this.toggle}
+          ref={ref => this.buttonRef = ref}
+          onFocus={this.registerFocussedListeners}
+          onBlur={this.unregisterFocussedListeners}
+        >
           <span className="hk-select__value">{value ? (isSelectOption(value) ? value.label : value) : (placeholder ||  'Select')}</span>
           <Arrow />
         </button>
