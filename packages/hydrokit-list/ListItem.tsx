@@ -6,23 +6,31 @@ export interface ListItemState {}
 export interface ListItemProps {
   header?: boolean;
   onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
+  className?: string;
 }
 
 export class ListItem extends React.Component<ListItemProps, ListItemState> {
   render() {
+    const {
+      header,
+      onClick,
+      children
+    } = this.props;
+
     const classNames = classnames(
       'hk-list__item',
-      this.props.header && 'hk-list__item--header',
-      this.props.onClick && 'hk-list__item--clickable'
+      header && 'hk-list__item--header',
+      onClick && 'hk-list__item--clickable',
+      this.props.className
     );
 
     return (
         <div 
           className={classNames} 
-          onClick={this.props.onClick}
-          tabIndex={this.props.onClick && 0}
+          onClick={onClick}
+          tabIndex={onClick && 0}
         >
-          {this.props.children}
+          {children}
         </div>
     );
   }
