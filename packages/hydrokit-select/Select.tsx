@@ -3,7 +3,7 @@ import * as React from 'react';
 import { FormEventHandler } from 'react';
 import { QuickSearchUtil } from './QuickSearchUtil';
 import { SelectOption } from './SelectOption';
-import { TextField } from '@hydrokit/textField';
+import { TextField } from '@hydrokit/textfield';
 import { classnames } from '@hydrokit/utils';
 
 export { SelectOption } from './SelectOption';
