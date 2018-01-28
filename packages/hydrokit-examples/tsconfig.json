@@ -18,7 +18,8 @@
     "preserveSymlinks": true,
     "rootDir": "src",
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "emitDecoratorMetadata": true,
+    "baseUrl": "./"
   },
   "exclude": [
     "node_modules",
