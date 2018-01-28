@@ -3,6 +3,10 @@
 	"license": "MIT",
 	"version": "0.1.0",
 	"devDependencies": {
+		"@types/enzyme": "^3.1.8",
+		"enzyme": "^3.3.0",
+		"enzyme-adapter-react-16": "^1.1.1",
+		"jest-enzyme": "^4.0.2",
 		"lerna": "2.5.1"
 	},
 	"workspaces": [
@@ -33,7 +37,9 @@
 			"node"
 		],
 		"setupFiles": [
-			"./node_modules/react-scripts-ts/config/polyfills.js"
-		]
+			"./node_modules/react-scripts-ts/config/polyfills.js",
+			"./config/jest.setup.js"
+		],
+		"setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js"
 	}
 }
