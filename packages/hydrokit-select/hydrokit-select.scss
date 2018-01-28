@@ -2,12 +2,13 @@
 
 @keyframes select-appear {
   0% {
-    opacity: 0.8;
+    opacity: .8;
     transform: translateY(-1em) rotateZ(-2deg);
   }
+
   100% {
     opacity: 1;
-    transform: translateY(0em) rotateZ(0deg);
+    transform: translateY(0) rotateZ(0deg);
   }
 }
 
@@ -18,12 +19,12 @@
 }
 
 .hk-select {
-  width: max-content;
   position: relative;
+  width: max-content;
 
+  &__toggle,
   &__value-container {
     @include hydrokit-component-base;
-    @include hydrokit-theme-bright(true);
     
     border: 0;
     display: flex;
@@ -32,6 +33,8 @@
     align-items: center;
     align-content: center;
     justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
 
     &--placeholder {
       color: lighten($hk-text-color-on-background, 20%);
@@ -42,9 +45,11 @@
     }
   }
 
+  &__value-container {
+    @include hydrokit-theme-bright(true);
+  }
+
   &__select {
-    // transform: translateY(0);
-    // animation: select-appear 0.1s ease-out;
     animation: select-appear 0.1s ease-out;
     min-width: 100%;
     width: max-content;

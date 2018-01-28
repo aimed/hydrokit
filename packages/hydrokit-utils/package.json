@@ -18,5 +18,8 @@
   },
   "peerDependencies": {
     "react": "^16.2.0"
+  },
+  "dependencies": {
+    "typescript": "^2.6.2"
   }
 }

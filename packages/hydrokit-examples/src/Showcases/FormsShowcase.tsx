@@ -8,6 +8,7 @@ import { Select } from '@hydrokit/select';
 import { SelectOption } from '../../../hydrokit-select/build/Select';
 import { Showcase } from '../Showcase/Showcase';
 import { TextField } from '@hydrokit/textField';
+import { Timepicker } from '@hydrokit/datepicker';
 import { observer } from 'mobx-react';
 
 export interface FormsShowcaseState { }
@@ -31,14 +32,14 @@ export class FormsShowcase extends React.Component<FormsShowcaseProps, FormsShow
   render() {
     return (
       <Showcase title="Forms">
-        <FormField label="Label" hint="Hint">
-          <TextField placeholder="Text field" />
+        <FormField label="Label" hint="Hint" htmlFor="text-field">
+          <TextField placeholder="Text field" id="text-field" />
         </FormField>
-        <FormField label="Label" error="Error">
-          <TextField placeholder="Text field with error" />
+        <FormField label="Label" error="Error" htmlFor="text-field-with-error">
+          <TextField placeholder="Text field with error" id="text-field-with-error" />
         </FormField>
         <FormField>
-          <Checkbox /><label>Checkbox</label>
+          <Checkbox id="checkbox" /><label htmlFor="checkbox">Checkbox</label>
         </FormField>
         <FormField>
           <Select 
@@ -56,6 +57,9 @@ export class FormsShowcase extends React.Component<FormsShowcaseProps, FormsShow
             value={this.selected}
             onSearch={s => this.search = s}
           />
+        </FormField>
+        <FormField label="Timepicker">
+          <Timepicker />
         </FormField>
       </Showcase>
     );

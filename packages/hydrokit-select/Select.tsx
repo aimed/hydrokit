@@ -264,7 +264,7 @@ export class Select<T> extends React.Component<SelectProps<T>, SelectState> {
         onSearch('');
       }
 
-      if (this.buttonRef) {
+      if (this.buttonRef && this.searchFieldFocussed) {
         this.buttonRef.focus();
       }
     }
@@ -442,7 +442,7 @@ export class Select<T> extends React.Component<SelectProps<T>, SelectState> {
 
         {open &&
           <div className="hk-select__select">
-            <button className="hk-select__value-container hk-select__value-container--placeholder" tabIndex={0} onClick={this.toggle}>
+            <button className="hk-select__toggle hk-select__toggle--placeholder" tabIndex={0} onClick={this.toggle}>
               <span className="hk-select__value">{placeholder ||  'Select'}</span>
               <Arrow />
             </button>
