@@ -33,7 +33,7 @@ export class PopoverMenu extends React.Component<PopoverMenuProps, PopoverMenuSt
     return `${alignVertical}-${alignHorizontal}`;
   }
 
-  toggle = () => {
+  toggle = () => {    
     if (this.props.onOpen) {
       this.props.onOpen(!this.open);
     } else {
@@ -41,7 +41,7 @@ export class PopoverMenu extends React.Component<PopoverMenuProps, PopoverMenuSt
     }
   }
 
-  handleDocumentClick = (event: MouseEvent) => {
+  handleDocumentClick = (event: MouseEvent) => {    
     if (
       !(this.container && event.srcElement && this.container.contains(event.srcElement))
       && this.open
@@ -69,7 +69,8 @@ export class PopoverMenu extends React.Component<PopoverMenuProps, PopoverMenuSt
   render() {    
     const themeClassNames = classnames(
       'hk-popover-menu-container',
-      this.props.dark ? 'hk-theme-dark' : 'hk-theme-bright'
+      this.props.dark ? 'hk-theme-dark' : 'hk-theme-bright',
+      this.open ? 'hk-popover-menu-container--open' : 'hk-popover-menu-container--closed'
     );
 
     const contentClassNames = classnames(
@@ -80,7 +81,7 @@ export class PopoverMenu extends React.Component<PopoverMenuProps, PopoverMenuSt
     return (
       <div className={themeClassNames}>
         <div className="hk-popover-menu" ref={ref => this.container = ref} onClick={this.toggle}>
-          <div className="hk-popover-menu__label">{this.props.label}</div>
+          <div className="hk-popover-menu__label__">{this.props.label}</div>
           {this.open && <div className={contentClassNames}>{this.props.children}</div>}
         </div>
       </div>
