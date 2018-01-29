@@ -17,6 +17,9 @@ export class Button extends React.Component<ButtonProps, ButtonState> {
       'hk-button',
       primary && 'hk-button--primary'
     );
-    return <button className={classNames} {...props} />;
+
+    return (
+      <button className={classNames} {...props} />
+    );
   }
 }

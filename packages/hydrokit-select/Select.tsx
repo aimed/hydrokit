@@ -27,16 +27,18 @@ const Arrow = () => (
   </svg>
 );
 
+// tslint:disable:max-line-length
 /**
  * Search icon
  * Icon from https://material.io/icons/
  */
-const Search = () => (
-  <svg className="hk-select__search-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
-    <path d="M0 0h24v24H0z" fill="none" />
-  </svg>
-);
+// const Search = () => (
+//   <svg className="hk-select__search-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+//     <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+//     <path d="M0 0h24v24H0z" fill="none" />
+//   </svg>
+// );
+// tslint:enable:max-line-length
 
 /**
  * Props for an Option element.
@@ -54,17 +56,15 @@ interface OptionProps {
  */
 const Option = ({ onClick, focussed, selected, label }: OptionProps): JSX.Element => {
   const classNames = classnames(
-    'hk-select__option', 
-    focussed && 'hk-select__option--focussed', 
+    'hk-select__option',
+    focussed && 'hk-select__option--focussed',
     selected && 'hk-select__option--selected'
   );
 
   return (
     <div className={classNames} onClick={onClick}>{label}</div>
   );
-}
-
-
+};
 
 /**
  * Checks if the given value is an primative value or a select option, whichs label can be used.
@@ -73,8 +73,9 @@ const Option = ({ onClick, focussed, selected, label }: OptionProps): JSX.Elemen
  * @param {(SelectOption<T> |  T)} value 
  * @returns {value is SelectOption<T>} 
  */
-function isSelectOption<T>(value: SelectOption<T> |  T): value is SelectOption<T> {
+function isSelectOption<T>(value: SelectOption<T> | T): value is SelectOption<T> {
   if (typeof value === 'object') {
+    // tslint:disable-next-line:no-any
     return (value as any).label !== undefined;
   }
   return false;
@@ -208,7 +209,7 @@ export class Select<T> extends React.Component<SelectProps<T>, SelectState> {
   get nextFocus(): number {
     const { focusIndex } = this.state;
     const { options = [] } = this.props;
-    return Math.min(focusIndex + 1, options.length -1);
+    return Math.min(focusIndex + 1, options.length - 1);
   }
 
   /**
@@ -220,7 +221,6 @@ export class Select<T> extends React.Component<SelectProps<T>, SelectState> {
    */
   get prevFocus(): number {
     const { focusIndex } = this.state;
-    const { options = [] } = this.props;
     return Math.max(focusIndex - 1, -1);
   }
 
@@ -233,7 +233,7 @@ export class Select<T> extends React.Component<SelectProps<T>, SelectState> {
    */
   get selectedIndex(): number {
     const { options = [], value } = this.props;
-    
+
     if (!value) {
       return -1;
     }
@@ -252,13 +252,13 @@ export class Select<T> extends React.Component<SelectProps<T>, SelectState> {
    */
   toggle = () => {
     const open = !this.state.open;
-    const { options = [], value, onSearch } = this.props;
+    const { options = [], onSearch } = this.props;
 
     if (open) {
       this.registerOpenListeners();
     } else {
       this.unregisterOpenListeners();
-      
+
       // At this point we need to clear the search, because otherwise results will still be filtered when going up/down
       if (onSearch) {
         onSearch('');
@@ -269,7 +269,7 @@ export class Select<T> extends React.Component<SelectProps<T>, SelectState> {
       }
     }
 
-    this.setState({ open, focusIndex: open && options.length ? this.selectedIndex ||  0 : -1, search: '' });
+    this.setState({ open, focusIndex: open && options.length ? this.selectedIndex || 0 : -1, search: '' });
   }
 
   /**
@@ -299,12 +299,12 @@ export class Select<T> extends React.Component<SelectProps<T>, SelectState> {
 
     if (e.key && !(e.metaKey || e.altKey || e.ctrlKey)) {
       const find = this.quickSearch.enterAndFind(e.key, options);
-      
+
       if (find >= 0) {
         this.select(find);
       }
       return;
-    }    
+    }
   }
 
   /**
@@ -345,12 +345,12 @@ export class Select<T> extends React.Component<SelectProps<T>, SelectState> {
 
     if (e.key && !(e.metaKey || e.altKey || e.ctrlKey) && !this.searchFieldFocussed) {
       const find = this.quickSearch.enterAndFind(e.key, options);
-      
+
       if (find >= 0) {
         this.focus(find);
       }
       return;
-    }    
+    }
   }
 
   /**
@@ -377,7 +377,7 @@ export class Select<T> extends React.Component<SelectProps<T>, SelectState> {
     if (this.state.open) {
       this.toggle();
     }
-    
+
     if (onSelect && options.length > focusIndex && focusIndex >= 0) {
       onSelect(options[focusIndex]);
     }
@@ -390,7 +390,7 @@ export class Select<T> extends React.Component<SelectProps<T>, SelectState> {
    * @memberof Select
    */
   search: FormEventHandler<HTMLInputElement> = (event) => {
-    const { onSearch = () => {/**/} } = this.props;
+    const { onSearch = () => {/**/ } } = this.props;
     this.setState({ search: event.currentTarget.value }, () => onSearch(this.state.search));
   }
 
@@ -428,22 +428,25 @@ export class Select<T> extends React.Component<SelectProps<T>, SelectState> {
     // TODO: Use Button with icons.
     return (
       <div className={selectClasses} ref={ref => this.containerRef = ref}>
-        <button 
-          className={valueContainerClasses} 
-          tabIndex={0} 
+        <button
+          className={valueContainerClasses}
+          tabIndex={0}
           onClick={this.toggle}
           ref={ref => this.buttonRef = ref}
           onFocus={this.registerFocussedListeners}
           onBlur={this.unregisterFocussedListeners}
         >
-          <span className="hk-select__value">{value ? (isSelectOption(value) ? value.label : value) : (placeholder ||  'Select')}</span>
+          <span className="hk-select__value">{value
+            ? (isSelectOption(value) ? value.label : value)
+            : (placeholder || 'Select')}
+          </span>
           <Arrow />
         </button>
 
         {open &&
           <div className="hk-select__select">
             <button className="hk-select__toggle hk-select__toggle--placeholder" tabIndex={0} onClick={this.toggle}>
-              <span className="hk-select__value">{placeholder ||  'Select'}</span>
+              <span className="hk-select__value">{placeholder || 'Select'}</span>
               <Arrow />
             </button>
 
@@ -451,8 +454,8 @@ export class Select<T> extends React.Component<SelectProps<T>, SelectState> {
               <div className="hk-select__search-container">
                 <TextField
                   inputRef={ref => ref && ref.focus()}
-                  onChange={this.search} 
-                  value={search} 
+                  onChange={this.search}
+                  value={search}
                   onFocus={() => this.searchFieldFocussed = true}
                   onBlur={() => this.searchFieldFocussed = false}
                 />

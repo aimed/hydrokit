@@ -10,7 +10,8 @@ import { PopoverMenu } from '@hydrokit/popover-menu';
 import { Showcase } from './Showcase/Showcase';
 
 export class App extends React.Component {
-  render() {
+  
+  render() {    
     return (
       <div className="app">
         <section className="app__content">

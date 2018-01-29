@@ -1,4 +1,4 @@
-import { SelectOption } from "./SelectOption";
+import { SelectOption } from './SelectOption';
 
 /**
  * A class that reproduces the typical type and focus behavior of native select elements.

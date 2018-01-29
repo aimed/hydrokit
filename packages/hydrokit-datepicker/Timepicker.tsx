@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-import { ReactHTMLElement } from 'react';
 import { classnames } from '@hydrokit/utils';
 
 function zeroPad(num: number): string {
@@ -46,7 +45,7 @@ export class Timepicker extends React.Component<TimepickerProps, TimepickerState
     minute: 0,
     amOrPm: 'am',
     open: false
-  }
+  };
 
   componentDidMount() {
     this.updateStateWithProps(this.props);
@@ -62,7 +61,7 @@ export class Timepicker extends React.Component<TimepickerProps, TimepickerState
       this.setState({
         hour: props.value.getHours(),
         minute: props.value.getMinutes()
-      })
+      });
     }
   }
 
@@ -94,7 +93,7 @@ export class Timepicker extends React.Component<TimepickerProps, TimepickerState
   }
 
   getNumericValue(e: React.FormEvent<HTMLInputElement>, max: number): number {
-    const input = parseInt(e.currentTarget.value.replace('-', '').replace(',', '').replace('.', ''));
+    const input = parseInt(e.currentTarget.value.replace('-', '').replace(',', '').replace('.', ''), 10);
 
     if (input === NaN) {
       return 0;
@@ -154,7 +153,7 @@ export class Timepicker extends React.Component<TimepickerProps, TimepickerState
     
     const {
       className,
-      value = new Date(),
+      // value = new Date(),
       onFocus,
       onBlur
     } = this.props;
@@ -212,7 +211,7 @@ export class Timepicker extends React.Component<TimepickerProps, TimepickerState
                   <div key={h} onClick={() => this.setState({ hour: h })}>{zeroPad(h)}</div>
                 )}
               </div>
-              <div className="hk-timepicker__touching-separator"></div>
+              <div className="hk-timepicker__touching-separator" />
               <div className="hk-timepicker__minutes">
                 {this.minuteValues().map(m => 
                   <div key={m} onClick={() => this.setState({ minute: m })}>{zeroPad(m)}</div>

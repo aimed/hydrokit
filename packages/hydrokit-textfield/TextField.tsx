@@ -3,7 +3,7 @@ import * as React from 'react';
 export interface TextFieldState { }
 export interface TextFieldProps extends
   React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
-    inputRef?: (ref: HTMLInputElement | null) => any;
+    inputRef?: (ref: HTMLInputElement | null) => void;
 //    ref?: (ref: TextField | null) => any;
 }
 

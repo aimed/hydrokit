@@ -1,13 +1,12 @@
 import * as React from 'react';
 
+import { Select, SelectOption } from '@hydrokit/select';
 import { computed, observable } from 'mobx';
 
 import { Checkbox } from '@hydrokit/checkbox';
 import { FormField } from '@hydrokit/formfield';
-import { Select } from '@hydrokit/select';
-import { SelectOption } from '../../../hydrokit-select/build/Select';
 import { Showcase } from '../Showcase/Showcase';
-import { TextField } from '@hydrokit/textField';
+import { TextField } from '@hydrokit/textfield';
 import { Timepicker } from '@hydrokit/datepicker';
 import { observer } from 'mobx-react';
 
