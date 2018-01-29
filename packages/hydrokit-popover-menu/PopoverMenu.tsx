@@ -42,10 +42,13 @@ export class PopoverMenu extends React.Component<PopoverMenuProps, PopoverMenuSt
   }
 
   handleDocumentClick = (event: MouseEvent) => {    
-    if (
-      !(this.container && event.srcElement && this.container.contains(event.srcElement))
-      && this.open
-    ) {
+    if (!this.container || !event.target) {
+      return;
+    }
+
+    const clickedOutside = !this.container.contains( event.target as Element);
+
+    if (clickedOutside && this.open) {
       this.toggle();
     }
   }
@@ -78,10 +81,13 @@ export class PopoverMenu extends React.Component<PopoverMenuProps, PopoverMenuSt
       'hk-popover-menu__content--' + this.align
     );
 
+    // tslint:disable-next-line:no-console
+    console.log(this);
+    
     return (
       <div className={themeClassNames}>
         <div className="hk-popover-menu" ref={ref => this.container = ref} onClick={this.toggle}>
-          <div className="hk-popover-menu__label__">{this.props.label}</div>
+          <div className="hk-popover-menu__label">{this.props.label}</div>
           {this.open && <div className={contentClassNames}>{this.props.children}</div>}
         </div>
       </div>

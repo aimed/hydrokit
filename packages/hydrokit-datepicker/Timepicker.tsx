@@ -85,7 +85,7 @@ export class Timepicker extends React.Component<TimepickerProps, TimepickerState
   }
 
   handleDocumentClick = (e: MouseEvent) => {
-    if (this.state.open && this.containerRef && e.srcElement && !this.containerRef.contains(e.srcElement)) {
+    if (this.state.open && this.containerRef && e.target && !this.containerRef.contains(e.target as Element)) {
       this.setState({ open: false });
     } else if (!this.state.open && this.containerRef && e.srcElement && this.containerRef.contains(e.srcElement)) {
       this.setState({ open: true });

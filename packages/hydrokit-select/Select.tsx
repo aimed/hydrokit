@@ -193,8 +193,8 @@ export class Select<T> extends React.Component<SelectProps<T>, SelectState> {
    * 
    * @memberof Select
    */
-  handleDocClick = (e: Event) => {
-    if (this.containerRef && e.srcElement && !this.containerRef.contains(e.srcElement)) {
+  handleDocClick = (e: MouseEvent) => {
+    if (this.containerRef && e.target && !this.containerRef.contains(e.target as Element)) {
       this.toggle();
     }
   }
