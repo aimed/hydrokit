@@ -19,9 +19,7 @@ export class App extends React.Component {
             <h1>Hydrokit</h1>
             <h2>Clean and fun</h2>
             {/* tslint:disable-next-line:max-line-length*/}     
-            <p>Hydrokit is a react UI framework designed to be as clean as possible while putting a focus on UX. It comes with beautifully animated and ready to use components out of the box. This approach results in an opinionated framework.</p>
-            {/* tslint:disable-next-line:max-line-length*/}     
-            <p>This framework is right for you, if you want to provide a clean and fun to use experience, but you should probably look somewhere else if you require a high amount of customizability.</p>
+            <p>An experimental React Component Library. See <a href="https://github.com/aimed/hydrokit">github</a>.</p>
           </section>
 
           <Showcase title="Buttons">
