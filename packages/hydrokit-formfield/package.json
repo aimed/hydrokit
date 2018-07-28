@@ -1,6 +1,6 @@
 {
   "name": "@hydrokit/formfield",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "license": "MIT",
@@ -16,7 +16,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@hydrokit/theme": "^0.6.0",
+    "@hydrokit/theme": "^0.6.1",
     "@hydrokit/utils": "^0.6.0",
     "typescript": "^2.6.2"
   },

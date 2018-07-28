@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.6.1"></a>
+## [0.6.1](https://github.com/aimed/hydrokit/compare/v0.6.0...v0.6.1) (2018-07-28)
+
+
+### Bug Fixes
+
+* defines colors as default ([063b185](https://github.com/aimed/hydrokit/commit/063b185))
+* remove showcase timepicker while in development ([07ec19e](https://github.com/aimed/hydrokit/commit/07ec19e))
+
+
+
+
 <a name="0.6.0"></a>
 # [0.6.0](https://github.com/aimed/hydrokit/compare/v0.5.0...v0.6.0) (2018-02-16)
 
