@@ -1,6 +1,6 @@
 {
     "name": "@hydrokit/select",
-    "version": "0.6.2",
+    "version": "0.6.3",
     "main": "build/index.js",
     "types": "build/index.d.ts",
     "license": "MIT",
@@ -13,10 +13,10 @@
         "react": "^16.2.0"
     },
     "dependencies": {
-        "@hydrokit/button": "^0.6.2",
-        "@hydrokit/textfield": "^0.6.2",
-        "@hydrokit/theme": "^0.6.2",
-        "@hydrokit/utils": "^0.6.2",
+        "@hydrokit/button": "^0.6.3",
+        "@hydrokit/textfield": "^0.6.3",
+        "@hydrokit/theme": "^0.6.3",
+        "@hydrokit/utils": "^0.6.3",
         "typescript": "^2.6.2"
     },
     "publishConfig": {
