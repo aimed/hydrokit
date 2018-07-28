@@ -1,11 +1,11 @@
-$hk-background-color: #ffffff;
-$hk-text-color-on-background: #333333;
-$hk-background-color-dark: #64677B;
-$hk-text-color-on-background-dark: #ffffff;
+$hk-background-color: #ffffff !default;
+$hk-text-color-on-background: #333333 !default;
+$hk-background-color-dark: #64677B !default;
+$hk-text-color-on-background-dark: #ffffff !default;
 
-$hk-color-primary: #02AFF5;
-$hk-text-color-on-primary: #ffffff;
-$hk-color-error: #FF413A;
+$hk-color-primary: #02AFF5 !default;
+$hk-text-color-on-primary: #ffffff !default;
+$hk-color-error: #FF413A !default;
 
 $hk-border-radius: 5px;
 
@@ -46,7 +46,7 @@ $hk-padding-component-big: 0.5rem 0.4rem;
 
 @mixin hydrokit-clickable() {
   outline: none;
-  
+
   &:hover {
     cursor: pointer;
   }
