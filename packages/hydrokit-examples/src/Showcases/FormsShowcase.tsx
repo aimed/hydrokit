@@ -7,7 +7,6 @@ import { Checkbox } from '@hydrokit/checkbox';
 import { FormField } from '@hydrokit/formfield';
 import { Showcase } from '../Showcase/Showcase';
 import { TextField } from '@hydrokit/textfield';
-import { Timepicker } from '@hydrokit/datepicker';
 import { observer } from 'mobx-react';
 
 export interface FormsShowcaseState { }
@@ -57,9 +56,9 @@ export class FormsShowcase extends React.Component<FormsShowcaseProps, FormsShow
             onSearch={s => this.search = s}
           />
         </FormField>
-        <FormField label="Timepicker">
+        {/* <FormField label="Timepicker">
           <Timepicker />
-        </FormField>
+        </FormField> */}
       </Showcase>
     );
   }
