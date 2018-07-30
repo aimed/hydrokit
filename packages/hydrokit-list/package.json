@@ -18,7 +18,7 @@
   "dependencies": {
     "@hydrokit/theme": "^0.6.3",
     "@hydrokit/utils": "^0.6.3",
-    "typescript": "^2.6.2"
+    "typescript": "^3.0.0"
   },
   "scripts": {
     "build": "tsc",
